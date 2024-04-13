@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bt{
+            display: block;
+            width: 700px;
+            height: 50px;
+            margin: 10px;
+        }
+        button{
+            margin-left: 300px;
+            text-align: left;
+        }
+        body{
+            background-color: lightblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Quiz</h1>
+        <p>1.JavaScript is a </p>
+        <button class="bt bt1">class Oriented</button>
+        <button class="bt bt2">Object Oriented</button>
+        <button class="bt bt3">Similar to Java</button>
+    <button class="next" >
+        Next
+    </button>
+    <h2></h2>
+    <script>
+        var cnt=1;
+      
+        var p=document.querySelector("p");
+        var option1=document.querySelector(".bt1");
+        var option2=document.querySelector(".bt2");
+        var option3=document.querySelector(".bt3");
+
+    //    function nextt(){
+    //         cnt++;
+    //         crct=0;
+    //         option1.style.backgroundColor="white";
+    //         option2.style.backgroundColor="white";
+    //         option3.style.backgroundColor="white";
+    //         if(cnt==2){
+    //         console.log("sdf");
+    //         p.textContent="let is a ";
+    //         option1.textContent="Block Scoped local Variable";
+    //         option2.textContent="Global Scope";
+    //         option3.textContent="Module Scope";
+    //         }
+    //         if(cnt==3){
+    //             p.textContent="Which is Correct ";
+    //         option1.textContent="int a=1;";
+    //         option2.textContent="float 1=1;";
+    //         option3.textContent="var a=1;";
+    //         }
+    //     }
+        var crct=0;
+        var mark=0;
+        var wrong=0;
+        var opt=document.querySelectorAll(".bt");
+        for(var i=0;i<opt.length;i++){
+        opt[i].addEventListener("click",function(){
+            // console.log(option1.innerHTML);
+            if(cnt===1 && crct==0){
+                var ans=this.innerHTML;
+                console.log("anss "+ans);
+                if(ans=="Object Oriented"){
+                    this.style.backgroundColor="green";
+                    crct=1;
+                }
+                else{
+                    this.style.backgroundColor="red";
+                    wrong++;
+                }
+                
+            }
+            if(cnt==2 && crct==0){
+                var ans=this.innerHTML;
+                console.log("anss "+ans);
+                if(ans=="Block Scoped local Variable"){
+                    this.style.backgroundColor="green";
+                    crct=1;
+                }
+                else{
+                    this.style.backgroundColor="red";
+                    wrong++;
+                }
+            }
+            if(cnt==3 && crct==0){
+                var ans=this.innerHTML;
+                console.log("anss "+ans);
+                if(ans=="var a=1;"){
+                    this.style.backgroundColor="green";
+                    crct=1;
+                    document.querySelector(".next").addEventListener("click",function(){
+                        mark=3-wrong;
+                        document.querySelector("h2").innerHTML="Completed... Correct Answer "+mark+" Wrong Answer "+wrong;
+                    });
+                }
+                else{
+                    this.style.backgroundColor="red";
+                    wrong++;
+                }
+            }
+
+
+           
+
+
+
+        });
+        }
+        
+        
+        document.querySelector(".next").addEventListener("click",function(){
+            
+           
+            if(crct==1){
+                cnt++;
+            option1.style.backgroundColor="white";
+            option2.style.backgroundColor="white";
+            option3.style.backgroundColor="white";
+            if(cnt==2){
+            console.log("sdf");
+            p.textContent="let is a ";
+            option1.textContent="Block Scoped local Variable";
+            option2.textContent="Global Scope";
+            option3.textContent="Module Scope";
+            }
+            if(cnt==3){
+                p.textContent="Which is Correct ";
+            option1.textContent="int a=1;";
+            option2.textContent="float 1=1;";
+            option3.textContent="var a=1;";
+            }
+            crct=0;
+        }
+        else{
+            alert("Select Correct Answer");
+        }
+        });
+    </script>
+</body>
+</html>
