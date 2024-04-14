@@ -61,6 +61,9 @@
         var crct=0;
         var mark=0;
         var wrong=0;
+        var wrong1=0;
+        var wrong2=0;
+        var wrong3=0;
         var opt=document.querySelectorAll(".bt");
         for(var i=0;i<opt.length;i++){
         opt[i].addEventListener("click",function(){
@@ -74,7 +77,7 @@
                 }
                 else{
                     this.style.backgroundColor="red";
-                    wrong++;
+                    wrong1=1;
                 }
                 
             }
@@ -87,7 +90,7 @@
                 }
                 else{
                     this.style.backgroundColor="red";
-                    wrong++;
+                    wrong2=1;
                 }
             }
             if(cnt==3 && crct==0){
@@ -97,13 +100,25 @@
                     this.style.backgroundColor="green";
                     crct=1;
                     document.querySelector(".next").addEventListener("click",function(){
+                        if(wrong1==1)
+                        {
+                            wrong++;
+                        }
+                        if(wrong2==1)
+                        {
+                            wrong++;
+                        }
+                        if(wrong3==1)
+                        {
+                            wrong++;
+                        }
                         mark=3-wrong;
                         document.querySelector("h2").innerHTML="Completed... Correct Answer "+mark+" Wrong Answer "+wrong;
                     });
                 }
                 else{
                     this.style.backgroundColor="red";
-                    wrong++;
+                    wrong3=1;
                 }
             }
 
